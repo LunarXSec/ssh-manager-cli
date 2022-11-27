@@ -26,7 +26,7 @@ def hash_file(filename):
            h.update(chunk)
    return h.hexdigest()
 with open("new.py", "w") as f:
-	f.write(requests.get("https://raw.githubusercontent.com/Quinn6182/ssh-manager-cli/main/src/main.py"))
+	f.write(requests.get("https://raw.githubusercontent.com/Quinn6182/ssh-manager-cli/main/src/main.py").content)
 new = hash_file("new.py")
 old = hash_file("main.py")
 if new == old:

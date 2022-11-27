@@ -7,7 +7,6 @@ curos = platform.platform()
 import hashlib
 import requests
 import pickle
-#Test for auto updating
 @dataclass
 class ssh_address:
 	id: int
@@ -32,6 +31,10 @@ old = hash_file("main.py")
 if new == old:
 	print("No updates!")
 	sleep(2)
+	if curos == 'Windows':
+		system("del new.py")
+	else:
+		system("rm new.py")
 else:
 	print("Update Available!")
 	print("Updating")

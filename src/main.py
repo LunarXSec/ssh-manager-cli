@@ -7,7 +7,6 @@ curos = platform.platform()
 import hashlib
 import requests
 import pickle
-# This is a test
 @dataclass
 class ssh_address:
 	id: int
@@ -35,8 +34,7 @@ if new == old:
 else:
 	print("Update Available!")
 	print("Updating")
-	print("When update done please reopen the program")
-	sleep(5)
+	sleep(3)
 	system("rm main.py")
 	if curos == 'Windows':
 		system("rename new.py main.py")

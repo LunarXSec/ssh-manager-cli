@@ -2,6 +2,10 @@ from dataclasses import dataclass
 from os import system
 from time import sleep
 from os.path import exists
+import platform
+curos = platform.platform()
+import hashlib
+import requests
 import pickle
 @dataclass
 class ssh_address:
@@ -11,6 +15,32 @@ class ssh_address:
 	username: str
 	def print_formatted(self):
 		print(f"{self.id} : {self.name} : {self.username}@{self.address}")
+def hash_file(filename):
+   h = hashlib.sha512()
+
+   with open(filename,'rb') as file:
+       chunk = 0
+       while chunk != b'':
+           chunk = file.read(1024)
+           h.update(chunk)
+   return h.hexdigest()
+with open("new.py", "w") as f:
+	f.write(requests.get("https://raw.githubusercontent.com/Quinn6182/ssh-manager-cli/main/src/main.py"))
+new = hash_file("new.py")
+old = hash_file("main.py")
+if new == old:
+	print("No updates!")
+	sleep(2)
+else:
+	print("Update Available!")
+	print("Updating")
+	print("When update done please reopen the program")
+	sleep(5)
+	system("rm main.py")
+	if curos == 'Windows':
+		system("rename new.py main.py")
+	else:
+		system("mv new.py main.py")
 if exists('ssh-conns.json'):
 	try:
 		with open('ssh-conns.json', 'rb') as f:

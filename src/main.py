@@ -7,6 +7,7 @@ curos = platform.platform()
 import hashlib
 import requests
 import pickle
+#Test for auto updating
 @dataclass
 class ssh_address:
 	id: int

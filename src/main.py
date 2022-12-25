@@ -40,10 +40,11 @@ else:
 	print("Updating")
 	sleep(3)
 	print("Bootstrapping New Version")
-	system("rm main.py")
 	if curos.find("Windows") != -1:
+		system("del main.py")
 		system("rename new.py main.py")
 	else:
+		system("rm main.py")
 		system("mv new.py main.py")
 if exists('ssh-conns.json'):
 	try:
@@ -64,7 +65,7 @@ while True:
 		system("clear")
 	for i in addresses:
 		i.print_formatted()
-	choice = int(input("What would you like to do?\n1 - Add Device\n2 - Connect to Device\n3 - Exit\n4 - Delete (W.I.P)"))
+	choice = int(input("What would you like to do?\n1 - Add Device\n2 - Connect to Device\n3 - Exit\n4 - Delete"))
 	if choice == 1:
 		addresses.append(ssh_address(len(addresses), input("What is the name? "), input("What is the ip? "), input("What is the username? ")))
 	elif choice == 2:

@@ -65,17 +65,17 @@ while True:
         system("clear")
     for i in addresses:
         i.print_formatted()
-    choice = int(input("What would you like to do?\n1 - Add Device\n2 - Connect to Device\n3 - Exit\n4 - Delete"))
+    choice = int(input("What would you like to do?\n1 - Add Device\n2 - Connect to Device\n3 - Delete\n4 - Exit\n"))
     if choice == 1:
         addresses.append(ssh_address(len(addresses), input("What is the name? "), input("What is the ip? "), input("What is the username? ")))
     elif choice == 2:
                 usrselected = addresses[int(input("What is the id of the address to use? " ))]
                 system(f"ssh {usrselected.username}@{usrselected.address}")
-    elif choice == 3:
+    elif choice == 4:
         with open("ssh-conns.json", 'wb') as f:
             f.write(pickle.dumps(addresses))
         break
-    elif choice == 4:
+    elif choice == 3:
                 id_to_remove = int(input("Which one to remove?"))
                 del addresses[id_to_remove]
     else:

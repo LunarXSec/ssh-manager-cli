@@ -31,7 +31,7 @@ old = hash_file("main.py")
 if new == old:
 	print("No updates!")
 	sleep(2)
-	if curos == 'Windows-10-10.0.22621-SP0':
+	if curos.find("Windows") != -1:
 		system("del new.py")
 	else:
 		system("rm new.py")
@@ -41,7 +41,7 @@ else:
 	sleep(3)
 	print("Bootstrapping New Version")
 	system("rm main.py")
-	if curos == 'Windows-10-10.0.22621-SP0':
+	if curos.find("Windows") != -1:
 		system("rename new.py main.py")
 	else:
 		system("mv new.py main.py")
@@ -58,7 +58,7 @@ else:
 if isinstance(addresses, str):
 	addresses = []
 while True:
-	if curos == 'Windows-10-10.0.22621-SP0':
+	if curos.find("Windows") != -1:
 		system("cls")
 	else:
 		system("clear")

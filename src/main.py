@@ -76,7 +76,7 @@ while True:
             f.write(pickle.dumps(addresses))
         break
     elif choice == 3:
-                id_to_remove = int(input("Which one to remove?"))
+                id_to_remove = int(input("Which one to remove? "))
                 del addresses[id_to_remove]
     else:
         print("Invalid")
